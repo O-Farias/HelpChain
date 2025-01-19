@@ -2,8 +2,8 @@ package com.helpchain.models;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -25,10 +25,10 @@ public class Campaign {
     private String description;
 
     @Column(nullable = false)
-    private BigDecimal goalAmount; 
+    private BigDecimal goalAmount;
 
     @Column(nullable = false)
-    private BigDecimal currentAmount = BigDecimal.ZERO; 
+    private BigDecimal currentAmount = BigDecimal.ZERO;
 
     @Column(nullable = false)
     private LocalDate startDate;
@@ -38,10 +38,10 @@ public class Campaign {
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
-    @JsonBackReference 
+    @JsonBackReference(value = "user-campaigns")
     private User owner;
 
     @OneToMany(mappedBy = "campaign", cascade = CascadeType.ALL)
-    @JsonManagedReference 
+    @JsonManagedReference(value = "campaign-donations")
     private List<Donation> donations = new ArrayList<>();
 }
