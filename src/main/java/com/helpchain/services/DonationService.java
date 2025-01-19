@@ -50,4 +50,9 @@ public class DonationService {
     public List<Donation> getDonationsByCampaign(Long campaignId) {
         return donationRepository.findByCampaignId(campaignId);
     }
+
+    // Método para obter o total arrecadado por uma campanha
+    public Double getTotalDonationsByCampaign(Long campaignId) {
+        return donationRepository.sumByCampaignId(campaignId);
+    }
 }
