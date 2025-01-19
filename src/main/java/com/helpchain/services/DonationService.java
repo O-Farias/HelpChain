@@ -7,6 +7,7 @@ import com.helpchain.repositories.CampaignRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -31,8 +32,9 @@ public class DonationService {
             throw new IllegalArgumentException("A campanha não está ativa para receber doações.");
         }
 
-        // Atualiza o valor arrecadado da campanha
-        campaign.setCurrentAmount(campaign.getCurrentAmount() + donation.getAmount());
+        // Atualiza o valor arrecadado da campanha usando BigDecimal
+        BigDecimal updatedAmount = campaign.getCurrentAmount().add(donation.getAmount());
+        campaign.setCurrentAmount(updatedAmount);
         campaignRepository.save(campaign);
 
         // Salva a doação
