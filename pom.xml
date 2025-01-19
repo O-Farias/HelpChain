@@ -47,6 +47,13 @@
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
 
+        <!-- Spring Security Test -->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
         <!-- Lombok (para reduzir o boilerplate de código) -->
         <dependency>
             <groupId>org.projectlombok</groupId>
