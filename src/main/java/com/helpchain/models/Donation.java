@@ -2,6 +2,9 @@ package com.helpchain.models;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Entity
@@ -13,18 +16,18 @@ public class Donation {
     private Long id;
 
     @Column(nullable = false)
-    private Double amount; 
+    private BigDecimal amount; 
 
     @Column(nullable = false)
-    private LocalDate donationDate; 
+    private LocalDate donationDate;
 
     @ManyToOne
-    @JoinColumn(name = "campaign_id", nullable = false) 
+    @JoinColumn(name = "campaign_id", nullable = false)
+    @JsonBackReference 
     private Campaign campaign;
 
     @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false) 
+    @JoinColumn(name = "user_id", nullable = false)
+    @JsonBackReference 
     private User donor;
-
-    
 }
