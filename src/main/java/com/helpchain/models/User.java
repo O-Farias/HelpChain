@@ -33,10 +33,10 @@ public class User {
     private String role;
 
     @OneToMany(mappedBy = "donor", cascade = CascadeType.ALL)
-    @JsonManagedReference 
+    @JsonManagedReference(value = "user-donations")
     private List<Donation> donations = new ArrayList<>();
 
     @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
-    @JsonManagedReference 
+    @JsonManagedReference(value = "user-campaigns")
     private List<Campaign> campaigns = new ArrayList<>();
 }
