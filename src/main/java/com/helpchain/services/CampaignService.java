@@ -31,7 +31,7 @@ public class CampaignService {
     // Método para listar campanhas ativas
     public List<Campaign> getActiveCampaigns() {
         LocalDate today = LocalDate.now();
-        return campaignRepository.findByStartDateBeforeAndEndDateAfter(today);
+        return campaignRepository.findByStartDateBeforeAndEndDateAfter(today, today);
     }
 
     // Método para buscar campanhas por ONG (usuário dono)
